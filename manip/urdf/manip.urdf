@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="manip">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0010372 0.0096001 -0.0015049"
+        rpy="0 0 0" />
+      <mass
+        value="0.94081" />
+      <inertia
+        ixx="0.023357"
+        ixy="-0.00021136"
+        ixz="2.0329E-18"
+        iyy="0.026263"
+        iyz="-8.1315E-19"
+        izz="0.0046818" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Empty_Link1">
+    <inertial>
+      <origin
+        xyz="-0.0011011 0.005382 -0.18905"
+        rpy="0 0 0" />
+      <mass
+        value="0.15671" />
+      <inertia
+        ixx="0.0023831"
+        ixy="-4.1189E-08"
+        ixz="1.4468E-06"
+        iyy="0.0027923"
+        iyz="6.6915E-05"
+        izz="0.00044373" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="j1"
+    type="revolute">
+    <origin
+      xyz="0.08659 0 0.083"
+      rpy="-2.834 0 -1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="Empty_Link1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="50"
+      velocity="100" />
+  </joint>
+  <link
+    name="Empty_Link2">
+    <inertial>
+      <origin
+        xyz="0.0014025 0.00075079 -0.10483"
+        rpy="0 0 0" />
+      <mass
+        value="0.043622" />
+      <inertia
+        ixx="0.00016972"
+        ixy="-3.5786E-08"
+        ixz="-3.6216E-06"
+        iyy="0.00022928"
+        iyz="-5.1923E-07"
+        izz="6.5402E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="j2"
+    type="revolute">
+    <origin
+      xyz="0 0.010603 -0.37242"
+      rpy="0.97478 0 0" />
+    <parent
+      link="Empty_Link1" />
+    <child
+      link="Empty_Link2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="50"
+      velocity="100" />
+  </joint>
+  <link
+    name="Empty_Link3">
+    <inertial>
+      <origin
+        xyz="0 0.071233 0.0062757"
+        rpy="0 0 0" />
+      <mass
+        value="0.042618" />
+      <inertia
+        ixx="8.3331E-05"
+        ixy="4.0658E-20"
+        ixz="6.7763E-21"
+        iyy="4.5654E-05"
+        iyz="-1.596E-06"
+        izz="4.2457E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://manip/meshes/Empty_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="j3"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.18082"
+      rpy="-1.5708 0.81994 -1.5708" />
+    <parent
+      link="Empty_Link2" />
+    <child
+      link="Empty_Link3" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="50"
+      velocity="100" />
+  </joint>
+</robot>
