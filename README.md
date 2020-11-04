@@ -7,4 +7,4 @@ Team Member
 - Rohit
 - Rahul R
 - Jashwanth Bandaru
-- Manishamanta
+- Manisha manta
