@@ -5,6 +5,6 @@ Simulation in Gazebo and motion planning with Moveit.
 Team Member
 - Arpith G Naik
 - Rohit
-  Rahul R
-  Jashwanth Bandaru
-  Manishamanta
+- Rahul R
+- Jashwanth Bandaru
+- Manishamanta
