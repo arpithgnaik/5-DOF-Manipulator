@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<launch>
+	<include file="$(find mob_manip_moveit_config)/launch/gazebo.launch" />
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+		<param name="publish_frequency" type="double" value="50.0" />
+		<param name="tf_prefix" type="string" value="" />
+	</node>
+	<!-- <node pkg="tf" type="static_transform_publisher" name="kinect" args="0 0 0 0 0 0 0 camera_link cameraLeft_depth_link 5" /> -->
+	<!-- <rosparam command="load" file="$(find mob_manip_moveit_config)/config/joint_names.yaml" /> -->
+	<!-- <rosparam command="load" file="$(find mob_manip_moveit_config)/config/sensors_3d.yaml" /> -->
+	<!-- Params for the octomap monitor -->
+	<!-- <param name="octomap_frame" type="string" value="world" />
+	<param name="octomap_resolution" type="double" value="0.025" />
+	<param name="max_range" type="double" value="5.0" /> -->
+	<!-- Load the robot specific sensor manager; this sets the moveit_sensor_manager ROS parameter -->
+	<!-- <arg name="moveit_sensor_manager" default="mob_manip" />
+	<include file="$(find mob_manip_moveit_config)/launch/$(arg moveit_sensor_manager)_moveit_sensor_manager.launch.xml" /> -->
+	<rosparam file="$(find mob_manip_moveit_config)/config/joint_state_controller.yaml" command="load" />
+	<node name="joint_state_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn joint_state_controller" respawn="false" output="screen" />
+	<rosparam file="$(find mob_manip_moveit_config)/config/trajectory_control.yaml" command="load" />
+	<node name="arm_controller_spawner" pkg="controller_manager" type="controller_manager" args="spawn arm_controller gripper_controller " respawn="false" output="screen" />
+	<include file="$(find mob_manip_moveit_config)/launch/planning_context.launch">
+		<arg name="load_robot_description" value="true" />
+	</include>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+		<param name="/use_gui" value="false" />
+		<rosparam param="/source_list">[/joint_states]</rosparam>
+	</node>
+	<include file="$(find mob_manip_moveit_config)/launch/move_group.launch">
+		<arg name="publish_monitored_planning_scene" value="true" />
+	</include>
+	<arg name="use_rviz" default="true" />
+	<include file="$(find mob_manip_moveit_config)/launch/moveit_rviz.launch">
+		<arg name="rviz_config" value="$(find mob_manip_moveit_config)/launch/moveit.rviz" />
+		<arg name="debug" value="false" />
+	</include>
+	<include file="$(find mob_manip_moveit_config)/launch/point2laser.launch"/>
+	<!-- rosrun octomap_server octomap_server_node my_octomap.bt -->
+	<!-- <arg name="map_file" default="$(find mob_manip_moveit_config)/maps/my_octomap.bt" />
+	<node name="octomap_server1" pkg="octomap_server" type="octomap_server_node" args="$(arg map_file)"/> -->
+</launch>
