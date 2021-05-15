@@ -1,0 +1,13 @@
+material india{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture india.png
+                scale 1 1
+            }
+        }   
+    }
+}
